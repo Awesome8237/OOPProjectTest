@@ -1,193 +1,16 @@
 #include <SFML/Graphics.hpp>
 #include <ctime>
+#include "Bullet.h"
+#include "Zombie.h"
 //#include"../SFML/Images/"
 using namespace sf;
 using namespace std;
-
 
 struct coordinats {
     int x;
     int y;
 };
 
-class Bullet{
-
-public:
-
-    Image spritesheet;
-    Texture bullettexture;
-    Sprite bulletsprite;
-    float velocity;
-
-    float x, y;
-
-
-
-    Bullet(){
-
-
-        spritesheet.loadFromFile("Images/peashooter_sheet_test.png");
-
-        bullettexture.loadFromImage(spritesheet);
-
-        bulletsprite.setTexture(bullettexture);
-        IntRect rectbulletSprite(256,63,10,10);
-        bulletsprite.setTextureRect(rectbulletSprite);
-
-
-        bulletsprite.scale(1,1);
-
-
-
-
-    }
-
-    void fire(){
-
-        bulletsprite.setPosition(100,100);
-
-        x = 100;
-
-        y = 100;
-
-        velocity = 70;
-
-    }
-
-    void moveBullet(RenderWindow& window,Time &bulletTime){
-
-        bulletsprite.setPosition((x += velocity * bulletTime.asSeconds()),y);
-        window.draw(bulletsprite);
-
-
-    }
-
-    bool isOutside(){
-
-        if(x > 600){
-            return true;
-        }
-        else{
-            return false;
-        }
-
-
-    }
-
-    Bullet& operator=(Bullet& copy){
-
-        spritesheet.loadFromFile("Images/peashooter_sheet_test.png");
-
-        bullettexture.loadFromImage(spritesheet);
-
-        bulletsprite.setTexture(bullettexture);
-        IntRect rectbulletSprite(256,63,10,10);
-        bulletsprite.setTextureRect(rectbulletSprite);
-
-
-        bulletsprite.scale(1,1);
-
-        velocity = copy.velocity;
-        x = copy.x;
-        y = copy.y;
-
-        return *this;
-
-
-
-    }
-
-
-
-
-};
-
-class Zombie{
-
-public:
-
-    Image zombspritesheet;
-    Texture zombtexture;
-    Sprite zombsprite;
-    float velocity;
-
-    int health;
-
-
-    Clock animationClock;
-
-    float x, y;
-
-
-
-    Zombie(){
-
-
-        zombspritesheet.loadFromFile("Images/zombie_sheet_test.png");
-
-        zombtexture.loadFromImage(zombspritesheet);
-
-        zombsprite.setTexture(zombtexture);
-        zombsprite.setTextureRect(IntRect(0,59,42,54));
-
-
-        zombsprite.setPosition(200,100);
-
-        x = 200;
-
-        y = 100;
-
-        velocity = 5;
-
-        health = 120;
-
-
-        zombsprite.scale(1,1);
-
-
-
-
-    }
-
-
-    void moveZombie(RenderWindow& window,Time &ZombTime){
-
-
-        zombsprite.setPosition((x -= velocity * ZombTime.asSeconds()),y);
-
-        if(animationClock.getElapsedTime().asSeconds() > 0.5f){
-
-            if(zombsprite.getTextureRect().left == 300)
-                zombsprite.setTextureRect(IntRect(0,59,42,54));
-            else
-                zombsprite.setTextureRect(IntRect(zombsprite.getTextureRect().left + 50,59,42,54));
-
-
-            animationClock.restart();
-
-        }
-
-        window.draw(zombsprite);
-
-
-    }
-
-    bool isOutside(){
-
-        if(x > 600){
-            return true;
-        }
-        else{
-            return false;
-        }
-
-
-    }
-
-
-
-
-};
 
 
 //Drawing the background
@@ -273,7 +96,10 @@ int main()
 
     Zombie zombie;
 
-    Bullet bullet[10];
+    Bullet* bullet[10];
+
+    for(int i = 0; i < 10; i++)
+        bullet[i] = nullptr;
 
     int currentbullets = 0;
 
@@ -314,49 +140,74 @@ int main()
         if(fireClock.getElapsedTime().asSeconds() > 1.0f){
 
             if(currentbullets < 10) {
-                bullet[currentbullets].fire();
-                currentbullets++;
-                fireClock.restart();
+                if(bullet[currentbullets] == nullptr) {
+                    bullet[currentbullets] = new Bullet();
+
+                    bullet[currentbullets]->fire();
+                    currentbullets++;
+
+                    fireClock.restart();
+                }
+            }
+            else{
+                currentbullets = 0;
+                if(bullet[currentbullets] == nullptr) {
+                    bullet[currentbullets] = new Bullet();
+
+                    bullet[currentbullets]->fire();
+                    currentbullets++;
+
+                    fireClock.restart();
+                }
+
+
             }
 
         }
 
-        for(int i = 0; i < currentbullets; i++) {
+        for(int i = 0; i < 10; i++) {
 
-            if(bullet[i].x <= zombie.x + 42 && bullet[i].x + 10 >= zombie.x){
+            if(bullet[i] == nullptr)
+                continue;
 
-                bullet[i].x = 1300;
+            if(bullet[i]->x <= zombie.x + 42 && bullet[i]->x + 10 >= zombie.x){
+
+                bullet[i]->x = 1300;
                 zombie.health -= 30;
 
             }
 
-            if (bullet[i].isOutside()) {
+            if (!bullet[i]->isOutside()) {
 
-                Bullet temp[10];
+//                Bullet temp[10];
+//
+//                for(int i = 0; i < currentbullets; i++){
+//
+//                    if(bullet[i].isOutside()){
+//                        continue;
+//                    }
+//
+//                    temp[i] = bullet[i];
+//
+//
+//                }
+//                currentbullets--;
+//                for(int i = 0; i < currentbullets; i++){
+//
+//                    bullet[i] = temp[i];
+//
+//
+//                }
+//
+//
+//            }
 
-                for(int i = 0; i < currentbullets; i++){
-
-                    if(bullet[i].isOutside()){
-                        continue;
-                    }
-
-                    temp[i] = bullet[i];
-
-
-                }
-                currentbullets--;
-                for(int i = 0; i < currentbullets; i++){
-
-                    bullet[i] = temp[i];
-
-
-                }
-
+               bullet[i]->moveBullet(window, bulletTime);
 
             }
             else{
-
-                bullet[i].moveBullet(window, bulletTime);
+                delete bullet[i];
+                bullet[i] = nullptr;
 
             }
         }

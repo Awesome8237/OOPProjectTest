@@ -3,7 +3,10 @@ project(SFMLTest)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(SFMLTest main.cpp)
+add_executable(SFMLTest main.cpp
+        Bullet.h
+        Zombie.h
+        Zombie.h)
 
 set(SFML_STATIC_LIBRARIES TRUE)
 set(SFML_DIR C:/SFML/lib/cmake/SFML)
