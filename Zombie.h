@@ -6,24 +6,37 @@
 #define SFMLTEST_ZOMBIE_H
 
 #include <SFML/Graphics.hpp>
+#include "ZombieAbstract.h"
+
 using namespace sf;
 using namespace std;
 
-class Zombie{
+/*const int scale = 3;
+
+const int windowSizeX = 256;
+const int windowSizeY = 192;
+const int gridSizeX = 246;
+const int gridSizeY = 169;
+const int windowLocationX = 71;
+const int windowLocationY = 2;
+const int gridLocationX = 5;
+const int gridLocationY = 17;*/
+
+class Zombie: public ZombieAbstract{
 
 public:
 
-    Image zombspritesheet;
+    /*Image zombspritesheet;
     Texture zombtexture;
     Sprite zombsprite;
     float velocity;
 
-    int health;
+    int health;*/
 
 
     Clock animationClock;
 
-    float x, y;
+    /*float x, y;*/
 
 
 
@@ -38,9 +51,9 @@ public:
         zombsprite.setTextureRect(IntRect(0,59,42,54));
 
 
-        zombsprite.setPosition(200,100);
+        zombsprite.setPosition(326,100);
 
-        x = 200;
+        x = 326;
 
         y = 100;
 
@@ -57,7 +70,7 @@ public:
     }
 
 
-    void moveZombie(RenderWindow& window,Time &ZombTime){
+    virtual void moveZombie(RenderWindow& window,Time &ZombTime){
 
 
         zombsprite.setPosition((x -= velocity * ZombTime.asSeconds()),y);
@@ -79,9 +92,9 @@ public:
 
     }
 
-    bool isOutside(){
+    /*bool isOutside(){
 
-        if(x > 600){
+        if(x > windowSizeX){
             return true;
         }
         else{
@@ -89,8 +102,21 @@ public:
         }
 
 
-    }
+    }*/
 
+    virtual void spawn(int y){
+
+        x = float(gridLocationX+gridSizeX);
+
+        this->y = y-20;
+
+        zombsprite.setPosition(x,this->y);
+
+
+        velocity = 5;
+
+
+    };
 
 
 

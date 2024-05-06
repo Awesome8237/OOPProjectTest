@@ -27,12 +27,12 @@ public:
     Bullet(){
 
 
-        spritesheet.loadFromFile("Images/peashooter_sheet_test.png");
+        spritesheet.loadFromFile("Images/shooter_sheet_ds.png");
 
         bullettexture.loadFromImage(spritesheet);
 
         bulletsprite.setTexture(bullettexture);
-        IntRect rectbulletSprite(256,63,10,10);
+        IntRect rectbulletSprite(77,43,11,10);
         bulletsprite.setTextureRect(rectbulletSprite);
 
         bulletsprite.scale(1,1);
@@ -45,11 +45,11 @@ public:
     void fire(){
 
 
-        bulletsprite.setPosition(100, 100);
+        bulletsprite.setPosition(121, 106);
 
-        x = 100;
+        x = 121;
 
-        y = 100;
+        y = 103;
 
         velocity = 70;
 
@@ -68,8 +68,7 @@ public:
 
     bool isOutside(){
 
-        if(x > 600){
-            exists = false;
+        if(x > 600 || !exists){
             return true;
         }
         else{
