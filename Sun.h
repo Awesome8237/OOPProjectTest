@@ -5,6 +5,7 @@
 #ifndef SFMLTEST_SUN_H
 #define SFMLTEST_SUN_H
 #include <SFML/Graphics.hpp>
+using namespace sf;
 
 class Sun{
 
@@ -62,65 +63,15 @@ public:
 public:
 
 
-    Sun(){
+    Sun();
 
-        spritesheet.loadFromFile("Images/sun_sheet.png");
+    bool isClicked(int MousePosX, int MousePosY);
 
-        suntexture.loadFromImage(spritesheet);
+    void drawSun(RenderWindow& window);
 
-        sunsprite.setTexture(suntexture);
-        sunsprite.setTextureRect(IntRect(0, 0, 26, 26));
+    void moveSun(RenderWindow& window,Time &deltaTime);
 
-        x = 150, y = 0;
-
-        clicked = false;
-
-        sunsprite.setPosition(x,y);
-
-        sunsprite.scale(1, 1);
-
-
-    };
-
-    bool isClicked(int MousePosX, int MousePosY){
-
-        if(MousePosX >= x*scale && MousePosX <= (x+26)*scale && MousePosY >= y*scale && MousePosY <= (y+26)*scale){
-
-            //make sun fly up
-
-            totalSuns += 25;
-
-            return true;
-        }
-        else{
-            return false;
-        }
-
-    }
-
-    void drawSun(RenderWindow& window){
-
-        sunsprite.setPosition(x,y);
-
-        window.draw(sunsprite);
-
-
-    }
-
-    void moveSun(RenderWindow& window,Time &deltaTime){
-
-        sunsprite.setPosition(x,(y += 10 * deltaTime.asSeconds()));
-
-        window.draw(sunsprite);
-    }
-
-    void spawnSun(){
-
-        x = 150;
-        y = 0;
-
-        sunsprite.setPosition(x,y);
-    }
+    void spawnSun();
 
 
 
@@ -128,7 +79,7 @@ public:
 
 };
 
-int Sun::totalSuns = 0;
+
 
 
 

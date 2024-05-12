@@ -124,17 +124,7 @@ public:
 
 
 
-    bool isOutside(){
-
-        if(x > windowSizeX){
-            return true;
-        }
-        else{
-            return false;
-        }
-
-
-    }
+    bool isOutside();
 
     virtual ~Zombie(){}
 

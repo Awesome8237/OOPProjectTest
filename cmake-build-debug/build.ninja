@@ -81,6 +81,110 @@ build CMakeFiles/SFMLTest.dir/DancingZombie.cpp.obj: CXX_COMPILER__SFMLTest_unsc
   OBJECT_DIR = CMakeFiles\SFMLTest.dir
   OBJECT_FILE_DIR = CMakeFiles\SFMLTest.dir
 
+build CMakeFiles/SFMLTest.dir/FootballZombie.cpp.obj: CXX_COMPILER__SFMLTest_unscanned_Debug C$:/Users/admin/CLionProjects/SFMLTest/FootballZombie.cpp || cmake_object_order_depends_target_SFMLTest
+  DEFINES = -DSFML_STATIC
+  DEP_FILE = CMakeFiles\SFMLTest.dir\FootballZombie.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -Ic:/SFML/include -isystem C:/SFML/include
+  OBJECT_DIR = CMakeFiles\SFMLTest.dir
+  OBJECT_FILE_DIR = CMakeFiles\SFMLTest.dir
+
+build CMakeFiles/SFMLTest.dir/FrozenPeaShooter.cpp.obj: CXX_COMPILER__SFMLTest_unscanned_Debug C$:/Users/admin/CLionProjects/SFMLTest/FrozenPeaShooter.cpp || cmake_object_order_depends_target_SFMLTest
+  DEFINES = -DSFML_STATIC
+  DEP_FILE = CMakeFiles\SFMLTest.dir\FrozenPeaShooter.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -Ic:/SFML/include -isystem C:/SFML/include
+  OBJECT_DIR = CMakeFiles\SFMLTest.dir
+  OBJECT_FILE_DIR = CMakeFiles\SFMLTest.dir
+
+build CMakeFiles/SFMLTest.dir/Icon.cpp.obj: CXX_COMPILER__SFMLTest_unscanned_Debug C$:/Users/admin/CLionProjects/SFMLTest/Icon.cpp || cmake_object_order_depends_target_SFMLTest
+  DEFINES = -DSFML_STATIC
+  DEP_FILE = CMakeFiles\SFMLTest.dir\Icon.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -Ic:/SFML/include -isystem C:/SFML/include
+  OBJECT_DIR = CMakeFiles\SFMLTest.dir
+  OBJECT_FILE_DIR = CMakeFiles\SFMLTest.dir
+
+build CMakeFiles/SFMLTest.dir/NormalZombie.cpp.obj: CXX_COMPILER__SFMLTest_unscanned_Debug C$:/Users/admin/CLionProjects/SFMLTest/NormalZombie.cpp || cmake_object_order_depends_target_SFMLTest
+  DEFINES = -DSFML_STATIC
+  DEP_FILE = CMakeFiles\SFMLTest.dir\NormalZombie.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -Ic:/SFML/include -isystem C:/SFML/include
+  OBJECT_DIR = CMakeFiles\SFMLTest.dir
+  OBJECT_FILE_DIR = CMakeFiles\SFMLTest.dir
+
+build CMakeFiles/SFMLTest.dir/Peashooter.cpp.obj: CXX_COMPILER__SFMLTest_unscanned_Debug C$:/Users/admin/CLionProjects/SFMLTest/Peashooter.cpp || cmake_object_order_depends_target_SFMLTest
+  DEFINES = -DSFML_STATIC
+  DEP_FILE = CMakeFiles\SFMLTest.dir\Peashooter.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -Ic:/SFML/include -isystem C:/SFML/include
+  OBJECT_DIR = CMakeFiles\SFMLTest.dir
+  OBJECT_FILE_DIR = CMakeFiles\SFMLTest.dir
+
+build CMakeFiles/SFMLTest.dir/Plant.cpp.obj: CXX_COMPILER__SFMLTest_unscanned_Debug C$:/Users/admin/CLionProjects/SFMLTest/Plant.cpp || cmake_object_order_depends_target_SFMLTest
+  DEFINES = -DSFML_STATIC
+  DEP_FILE = CMakeFiles\SFMLTest.dir\Plant.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -Ic:/SFML/include -isystem C:/SFML/include
+  OBJECT_DIR = CMakeFiles\SFMLTest.dir
+  OBJECT_FILE_DIR = CMakeFiles\SFMLTest.dir
+
+build CMakeFiles/SFMLTest.dir/PlantFactory.cpp.obj: CXX_COMPILER__SFMLTest_unscanned_Debug C$:/Users/admin/CLionProjects/SFMLTest/PlantFactory.cpp || cmake_object_order_depends_target_SFMLTest
+  DEFINES = -DSFML_STATIC
+  DEP_FILE = CMakeFiles\SFMLTest.dir\PlantFactory.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -Ic:/SFML/include -isystem C:/SFML/include
+  OBJECT_DIR = CMakeFiles\SFMLTest.dir
+  OBJECT_FILE_DIR = CMakeFiles\SFMLTest.dir
+
+build CMakeFiles/SFMLTest.dir/Repeater.cpp.obj: CXX_COMPILER__SFMLTest_unscanned_Debug C$:/Users/admin/CLionProjects/SFMLTest/Repeater.cpp || cmake_object_order_depends_target_SFMLTest
+  DEFINES = -DSFML_STATIC
+  DEP_FILE = CMakeFiles\SFMLTest.dir\Repeater.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -Ic:/SFML/include -isystem C:/SFML/include
+  OBJECT_DIR = CMakeFiles\SFMLTest.dir
+  OBJECT_FILE_DIR = CMakeFiles\SFMLTest.dir
+
+build CMakeFiles/SFMLTest.dir/Sun.cpp.obj: CXX_COMPILER__SFMLTest_unscanned_Debug C$:/Users/admin/CLionProjects/SFMLTest/Sun.cpp || cmake_object_order_depends_target_SFMLTest
+  DEFINES = -DSFML_STATIC
+  DEP_FILE = CMakeFiles\SFMLTest.dir\Sun.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -Ic:/SFML/include -isystem C:/SFML/include
+  OBJECT_DIR = CMakeFiles\SFMLTest.dir
+  OBJECT_FILE_DIR = CMakeFiles\SFMLTest.dir
+
+build CMakeFiles/SFMLTest.dir/SunFlower.cpp.obj: CXX_COMPILER__SFMLTest_unscanned_Debug C$:/Users/admin/CLionProjects/SFMLTest/SunFlower.cpp || cmake_object_order_depends_target_SFMLTest
+  DEFINES = -DSFML_STATIC
+  DEP_FILE = CMakeFiles\SFMLTest.dir\SunFlower.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -Ic:/SFML/include -isystem C:/SFML/include
+  OBJECT_DIR = CMakeFiles\SFMLTest.dir
+  OBJECT_FILE_DIR = CMakeFiles\SFMLTest.dir
+
+build CMakeFiles/SFMLTest.dir/WallNut.cpp.obj: CXX_COMPILER__SFMLTest_unscanned_Debug C$:/Users/admin/CLionProjects/SFMLTest/WallNut.cpp || cmake_object_order_depends_target_SFMLTest
+  DEFINES = -DSFML_STATIC
+  DEP_FILE = CMakeFiles\SFMLTest.dir\WallNut.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -Ic:/SFML/include -isystem C:/SFML/include
+  OBJECT_DIR = CMakeFiles\SFMLTest.dir
+  OBJECT_FILE_DIR = CMakeFiles\SFMLTest.dir
+
+build CMakeFiles/SFMLTest.dir/Zombie.cpp.obj: CXX_COMPILER__SFMLTest_unscanned_Debug C$:/Users/admin/CLionProjects/SFMLTest/Zombie.cpp || cmake_object_order_depends_target_SFMLTest
+  DEFINES = -DSFML_STATIC
+  DEP_FILE = CMakeFiles\SFMLTest.dir\Zombie.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -Ic:/SFML/include -isystem C:/SFML/include
+  OBJECT_DIR = CMakeFiles\SFMLTest.dir
+  OBJECT_FILE_DIR = CMakeFiles\SFMLTest.dir
+
+build CMakeFiles/SFMLTest.dir/ZombieFactory.cpp.obj: CXX_COMPILER__SFMLTest_unscanned_Debug C$:/Users/admin/CLionProjects/SFMLTest/ZombieFactory.cpp || cmake_object_order_depends_target_SFMLTest
+  DEFINES = -DSFML_STATIC
+  DEP_FILE = CMakeFiles\SFMLTest.dir\ZombieFactory.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -Ic:/SFML/include -isystem C:/SFML/include
+  OBJECT_DIR = CMakeFiles\SFMLTest.dir
+  OBJECT_FILE_DIR = CMakeFiles\SFMLTest.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target SFMLTest
@@ -89,7 +193,7 @@ build CMakeFiles/SFMLTest.dir/DancingZombie.cpp.obj: CXX_COMPILER__SFMLTest_unsc
 #############################################
 # Link the executable SFMLTest.exe
 
-build SFMLTest.exe: CXX_EXECUTABLE_LINKER__SFMLTest_Debug CMakeFiles/SFMLTest.dir/main.cpp.obj CMakeFiles/SFMLTest.dir/Bullet.cpp.obj CMakeFiles/SFMLTest.dir/CherryBomb.cpp.obj CMakeFiles/SFMLTest.dir/DancingZombie.cpp.obj | C$:/SFML/lib/libsfml-audio-s-d.a C$:/SFML/lib/libsfml-graphics-s-d.a C$:/SFML/lib/libsfml-window-s-d.a C$:/SFML/lib/libsfml-system-s-d.a C$:/SFML/lib/libopenal32.a C$:/SFML/lib/libvorbisfile.a C$:/SFML/lib/libvorbisenc.a C$:/SFML/lib/libvorbis.a C$:/SFML/lib/libogg.a C$:/SFML/lib/libFLAC.a C$:/SFML/lib/libfreetype.a
+build SFMLTest.exe: CXX_EXECUTABLE_LINKER__SFMLTest_Debug CMakeFiles/SFMLTest.dir/main.cpp.obj CMakeFiles/SFMLTest.dir/Bullet.cpp.obj CMakeFiles/SFMLTest.dir/CherryBomb.cpp.obj CMakeFiles/SFMLTest.dir/DancingZombie.cpp.obj CMakeFiles/SFMLTest.dir/FootballZombie.cpp.obj CMakeFiles/SFMLTest.dir/FrozenPeaShooter.cpp.obj CMakeFiles/SFMLTest.dir/Icon.cpp.obj CMakeFiles/SFMLTest.dir/NormalZombie.cpp.obj CMakeFiles/SFMLTest.dir/Peashooter.cpp.obj CMakeFiles/SFMLTest.dir/Plant.cpp.obj CMakeFiles/SFMLTest.dir/PlantFactory.cpp.obj CMakeFiles/SFMLTest.dir/Repeater.cpp.obj CMakeFiles/SFMLTest.dir/Sun.cpp.obj CMakeFiles/SFMLTest.dir/SunFlower.cpp.obj CMakeFiles/SFMLTest.dir/WallNut.cpp.obj CMakeFiles/SFMLTest.dir/Zombie.cpp.obj CMakeFiles/SFMLTest.dir/ZombieFactory.cpp.obj | C$:/SFML/lib/libsfml-audio-s-d.a C$:/SFML/lib/libsfml-graphics-s-d.a C$:/SFML/lib/libsfml-window-s-d.a C$:/SFML/lib/libsfml-system-s-d.a C$:/SFML/lib/libopenal32.a C$:/SFML/lib/libvorbisfile.a C$:/SFML/lib/libvorbisenc.a C$:/SFML/lib/libvorbis.a C$:/SFML/lib/libogg.a C$:/SFML/lib/libFLAC.a C$:/SFML/lib/libfreetype.a
   FLAGS = -g
   LINK_LIBRARIES = C:/SFML/lib/libsfml-audio-s-d.a  C:/SFML/lib/libsfml-graphics-s-d.a  C:/SFML/lib/libsfml-window-s-d.a  C:/SFML/lib/libsfml-system-s-d.a  C:/SFML/lib/libopenal32.a  C:/SFML/lib/libvorbisfile.a  C:/SFML/lib/libvorbisenc.a  C:/SFML/lib/libvorbis.a  C:/SFML/lib/libogg.a  C:/SFML/lib/libFLAC.a  -lOpenGL32  -lwinmm  -lgdi32  C:/SFML/lib/libfreetype.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\SFMLTest.dir

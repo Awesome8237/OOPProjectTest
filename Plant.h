@@ -54,14 +54,7 @@ protected:
     int health;
 
 public:
-    void spawn(int X, int Y){
-
-        x = X;
-        y = Y;
-
-        plantsprite.setPosition(x, y);
-
-    }
+    void spawn(int X, int Y);
 
     virtual void update() = 0;
     virtual void idleAnimation(RenderWindow& window) = 0;

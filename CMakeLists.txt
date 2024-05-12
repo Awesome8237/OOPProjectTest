@@ -35,7 +35,20 @@ add_executable(SFMLTest main.cpp
         Bullet.cpp
         Game.h
         CherryBomb.cpp
-        DancingZombie.cpp)
+        DancingZombie.cpp
+        FootballZombie.cpp
+        FrozenPeaShooter.cpp
+        Icon.cpp
+        NormalZombie.cpp
+        Peashooter.cpp
+        Plant.cpp
+        PlantFactory.cpp
+        Repeater.cpp
+        Sun.cpp
+        SunFlower.cpp
+        WallNut.cpp
+        Zombie.cpp
+        ZombieFactory.cpp)
 
 set(SFML_STATIC_LIBRARIES TRUE)
 set(SFML_DIR C:/SFML/lib/cmake/SFML)
