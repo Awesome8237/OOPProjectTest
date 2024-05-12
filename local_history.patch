@@ -1,0 +1,85 @@
+Index: main.cpp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/main.cpp b/main.cpp
+--- a/main.cpp	
++++ b/main.cpp	(date 1714973406235)
+@@ -3,6 +3,7 @@
+ #include "Bullet.h"
+ #include "Zombie.h"
+ #include "Peashooter.h"
++#include "ZombieAbstract.h"
+ #include <ctime>
+ 
+ //#include"../SFML/Images/"
+@@ -113,7 +114,7 @@
+ 
+     Time bulletTime;
+ 
+-    Zombie* zombie[5];
++    ZombieAbstract* zombie[5];
+ 
+     Bullet** bullet[45];
+ 
+Index: Zombie.h
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Zombie.h b/Zombie.h
+--- a/Zombie.h	
++++ b/Zombie.h	(date 1714973723574)
+@@ -22,21 +22,21 @@
+ const int gridLocationX = 5;
+ const int gridLocationY = 17;*/
+ 
+-class Zombie{
++class Zombie: public ZombieAbstract{
+ 
+ public:
+ 
+-    Image zombspritesheet;
++    /*Image zombspritesheet;
+     Texture zombtexture;
+     Sprite zombsprite;
+     float velocity;
+ 
+-    int health;
++    int health;*/
+ 
+ 
+     Clock animationClock;
+ 
+-    float x, y;
++    /*float x, y;*/
+ 
+ 
+ 
+@@ -113,7 +113,7 @@
+         zombsprite.setPosition(x,this->y);
+ 
+ 
+-        velocity = 2;
++        velocity = 5;
+ 
+ 
+     };
+Index: ZombieAbstract.h
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ZombieAbstract.h b/ZombieAbstract.h
+--- a/ZombieAbstract.h	
++++ b/ZombieAbstract.h	(date 1714973406230)
+@@ -22,7 +22,7 @@
+ 
+ class ZombieAbstract{
+ 
+-protected:
++public:
+ 
+     Image zombspritesheet;
+     Texture zombtexture;
