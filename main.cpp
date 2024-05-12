@@ -1,10 +1,17 @@
 #include <SFML/Graphics.hpp>
 #include <ctime>
 #include "Bullet.h"
-#include "Zombie.h"
+#include "NormalZombie.h"
 #include "Peashooter.h"
-#include "ZombieAbstract.h"
-#include <ctime>
+#include "Icon.h"
+#include "Sun.h"
+#include "SunFlower.h"
+#include "CherryBomb.h"
+#include "WallNut.h"
+#include "PlantFactory.h"
+#include "ZombieFactory.h"
+
+
 
 //#include"../SFML/Images/"
 using namespace sf;
@@ -112,60 +119,95 @@ int main()
 
     Clock zomClock;
 
-    Time bulletTime;
+    Time deltaTime;
 
-    ZombieAbstract* zombie[5];
+
+
+    Zombie** zombie;
+
+    zombie = new Zombie * [45];
 
     Bullet** bullet[45];
 
-    //Bullet* bullet[10];
+    Sun** sun[45];
 
-    Peashooter* peashooter[45];
+    Sun FlyingSun;
 
-    for(int i = 0; i < 10; i++)
-        bullet[i] = nullptr;
+    Clock FlyingSunClock;
 
-    for (int i = 0; i < 5; ++i) {
-        zombie[i] = nullptr;
+    Plant* plants[45];
+
+    Icon* icons[7];
+
+    PlantFactory plantFactory(plants,bullet,sun,zombie,deltaTime);
+
+    ZombieFactory zombieFactory(zombie);
+
+
+
+   cout << "Total suns: " << Sun::totalSuns << endl;
+
+
+    for (int i = 0; i < 7; ++i) {
+
+        icons[i] = nullptr;
     }
 
     for (int i = 0; i < 45; ++i) {
-        peashooter[i] = nullptr;
+        plants[i] = nullptr;
         bullet[i] = nullptr;
+        sun[i] = nullptr;
+        zombie[i] = nullptr;
     }
 
-    int currentbullets = 0;
-    int currentzombie = 0;
+    icons[0] = new Icon(0);
+    icons[1] = new Icon(1);
+    icons[2] = new Icon(2);
+    icons[3] = new Icon(3);
+    icons[4] = new Icon(4);
+    icons[5] = new Icon(5);
 
-    int currentshooter = 0;
 
-    /*Image spritesheet;
-    spritesheet.loadFromFile("Images/peashooter_sheet_test.png");
-    Texture peashootertexture;
-    peashootertexture.loadFromImage(spritesheet);
-    Sprite peashootersprite;
-    peashootersprite.setTexture(peashootertexture);
-    IntRect rectPeaShooterSprite(2,10,34,33);
-    peashootersprite.setTextureRect(rectPeaShooterSprite);
-    peashootersprite.setPosition(100,100);
-    peashootersprite.scale(1,1);*/
+    //-------------------------GAME LOOP-------------------------------------//
+
 
     bool mouseclicked = false;
 
+    bool paused = false;
+
+
     while (window.isOpen())
     {
+
+
+
         float time = clock.getElapsedTime().asMicroseconds();
         float moneyTime = timeMoney.getElapsedTime().asSeconds();
 
         clock.restart();
         time = time / 800;
         
+        //----------------------------EVENT POLLING------------------------------------------//
 
         Event event;
         while (window.pollEvent(event))
         {
             if (event.type == Event::Closed)
                 window.close();
+
+            if (event.type == sf::Event::MouseButtonPressed) //Mouse button Pressed
+            {
+                if (event.mouseButton.button == sf::Mouse::Left && !mouseclicked) //specifies
+                {
+                    mouseclicked = true;
+                }
+            }
+            if (event.type == sf::Event::KeyReleased && event.key.code == Keyboard::Escape)
+            {
+                    paused = !paused;
+
+            }
+
 
         }
 
@@ -175,127 +217,186 @@ int main()
 
 
 
-        if(Mouse::isButtonPressed(Mouse::Left)){
-            mouseclicked = true;
-            cout << "Button's pressed" << endl;
-            cout << Mouse::getPosition(window).x << "," << Mouse::getPosition(window).y << endl;
+            //-----------------------------------MOUSE CLICK DETECTION--------------------------------//
 
-        }
+            int MousePosX = Mouse::getPosition(window).x;
+            int MousePosY = Mouse::getPosition(window).y;
 
-        if(mouseclicked){
-            mouseclicked = false;
-            /*for(int i = 0; i < ROWS; i++){
+            if (mouseclicked) {
+                mouseclicked = false;
 
-                for(int j = 0; j < COLS; j++){*/
+                /*int MousePosX = Mouse::getPosition(window).x;
+                int MousePosY = Mouse::getPosition(window).y;*/
 
 
-                        int MousePosX = Mouse::getPosition(window).x;
-                        int MousePosY = Mouse::getPosition(window).y;
+                //---------FLYING SUN CLICKS-----------//
 
-                        
+                if (FlyingSun.isClicked(MousePosX, MousePosY)) {
 
-                        int j = (((MousePosX-gridLocationX*scale)/(gridSizeX*scale/9)));
-                        int i = (((MousePosY-gridLocationY*scale)/(gridSizeY*scale/5)));
+                    FlyingSun.setClicked(true);
 
-                        cout << MousePosX <<","<< MousePosY << endl;
-                        cout << i << "," << j << endl;
+                }
 
+                for (int i = 0; i < 45; i++) {
 
-                        if(!FIELD_GAME_STATUS[i][j] && i >= 0 && i < 5 && j >= 0 && j < 9) {
-                            FIELD_GAME_STATUS[i][j] = true;
-                            bullet[currentshooter] = new Bullet*[10];
+                    if (sun[i] == nullptr)
+                        continue;
 
-                            for(int k = 0; k < 10; k++)
-                                bullet[currentshooter][k] = nullptr;
+                    for (int j = 0; j < 5; j++) {
 
-                            peashooter[currentshooter] = new Peashooter(bullet[currentshooter], i);
+                        if (sun[i][j] == nullptr)
+                            continue;
 
-                            peashooter[currentshooter]->spawn((gridSizeX/9)*j+gridLocationX, (gridSizeY/5)*i+gridLocationY);
-                            currentshooter++;
+                        if (sun[i][j]->isClicked(MousePosX, MousePosY)) {
+
+                            sun[i][j]->setClicked(true);
+
 
                         }
 
-                    //}
+                    }
 
-            /*    }
+                }
+
+                //---------SUN CLICKS-----------//
+
+                for (int i = 0; i < 7; i++) {
+
+                    if (icons[i] == nullptr)
+                        continue;
+
+                    if (Sun::totalSuns >= icons[i]->getCost() && icons[i]->getPassedTime() >= icons[i]->getRegenTime())
+                        icons[i]->setAvailable(true);
+                    else
+                        icons[i]->setAvailable(false);
 
 
-            }*/
+                    if (icons[i]->isClicked(MousePosX, MousePosY) && icons[i]->isAvailable()) {
 
+                        for (int j = 0; j < 7; j++) {
+                            if (icons[j] == nullptr || i == j)
+                                continue;
+
+                            icons[j]->setSelected(false);
+
+                        }
+
+                        icons[i]->setSelected(!(icons[i]->isSelected()));
+
+
+                    }
+
+
+                    cout << "Selected: " << icons[i]->isSelected() << endl;
+
+                }
+
+                //---------ICON CLICKS-----------//
+
+                if (MousePosX >= gridLocationX * scale && MousePosY >= gridLocationY * scale) {
+                    int j = (((MousePosX - gridLocationX * scale) / (gridSizeX * scale / 9)));
+                    int i = (((MousePosY - gridLocationY * scale) / (gridSizeY * scale / 5)));
+
+                    cout << MousePosX << "," << MousePosY << endl;
+                    cout << i << "," << j << endl;
+
+                    int iconNum = -1;
+
+                    for (int k = 0; k < 7; k++) {
+
+                        if (icons[k] == nullptr)
+                            continue;
+
+                        if (icons[k]->isSelected()) {
+
+                            iconNum = k;
+                            cout << "IconNum: " << iconNum << endl;
+
+                            break;
+
+                        }
+
+                    }
+
+
+                    if (!FIELD_GAME_STATUS[i][j] && i >= 0 && i < 5 && j >= 0 && j < 9 && iconNum != -1) {
+
+                        FIELD_GAME_STATUS[i][j] = true;
+
+
+                        plantFactory.createPlant(i, j, iconNum);
+
+
+                        icons[iconNum]->setSelected(false);
+                        icons[iconNum]->resetTimer();
+                        icons[iconNum]->setAvailable(false);
+                        Sun::totalSuns -= icons[iconNum]->getCost();
+                    }
+                }
+
+
+            }
+
+            //--------------------------------- ENTITY UPDATION ----------------------------------//
+
+            deltaTime = bulletClock.restart();
+
+
+
+        //---------FLYING SUN------------//
+
+
+        if(FlyingSunClock.getElapsedTime().asSeconds() >= 5.0f && FlyingSun.getClicked() || FlyingSun.getY() >= 200){
+
+            FlyingSun.spawnSun();
+            FlyingSun.setClicked(false);
+            FlyingSunClock.restart();
 
         }
 
-        bulletTime = bulletClock.restart();
+        if(!FlyingSun.getClicked())
+            FlyingSun.moveSun(window,deltaTime);
 
-        //if(fireClock.getElapsedTime().asSeconds() > 1.0f){
 
-            for(int i = 0; i < 5; i++) {
 
-                if(zombie[i] == nullptr)
-                    continue;
 
-                if (zombie[i]->x < gridSizeX) {
+
+        //----------------PLANT UPDATION------------------------//
 
                     for(int j = 0; j < 45; j++){
 
-                        if(peashooter[j] == nullptr)
+                        if(plants[j] == nullptr)
                             continue;
 
-                        peashooter[j]->fire();
+                            plants[j]->update();
 
 
                     }
 
 
 
-                        //fireClock.restart();
-
-                }
-            }
-
-        //}
-
-        if(zomClock.getElapsedTime().asSeconds() > 5.0f){
-
-            int lane = rand()%5;
-
-            if(currentzombie < 5) {
-                if(zombie[currentzombie] == nullptr) {
+        //---------ZOMBIE SPAWNING---------------------//
 
 
+        zombieFactory.createZombie();
 
-                    zombie[currentzombie] = new Zombie();
+        //---------PLANTS---------------------//
 
-                    zombie[currentzombie]->spawn((gridSizeY/5)*lane+gridLocationY);
-                    currentzombie++;
+        for(int i = 0; i < 45; i++) {
 
-                    zomClock.restart();
-                }
-            }
-            else{
-                currentzombie = 0;
-                if(zombie[currentzombie] == nullptr) {
-
-                    zombie[currentzombie] = new Zombie();
-
-                    zombie[currentzombie]->spawn((gridSizeY/5)*lane+gridLocationY);
-
-                    zomClock.restart();
-                }
-
-
-
-            }
-
-        }
-
-        for(int i = 0; i < currentshooter; i++) {
-
-            if(peashooter[i] == nullptr)
+            if(plants[i] == nullptr)
                 continue;
 
-            peashooter[i]->idleAnimation(window);
+            plants[i]->idleAnimation(window);
+
+            if(plants[i]->getHealth() <= 0){
+                delete plants[i];
+                plants[i] = nullptr;
+            }
         }
+
+
+        //-------------------BULLETS---------------------//
 
         for(int i = 0; i < 45; i++) {
 
@@ -307,19 +408,21 @@ int main()
                 if (bullet[i][j] == nullptr)
                     continue;
 
-                for (int k = 0; k < 5; k++) {
+                for (int k = 0; k < 45; k++) {
 
                     if (zombie[k] == nullptr)
                         continue;
 
-                    if (bullet[i][j]->x <= zombie[k]->x + 42 && bullet[i][j]->x + 10 >= zombie[k]->x && bullet[i][j]->y <= zombie[k]->y + 54 && bullet[i][j]->y+10 >= zombie[k]->y) {
+                    if (bullet[i][j]->getX() <= zombie[k]->getX() + 42 && bullet[i][j]->getX() + 10 >= zombie[k]->getX() && bullet[i][j]->getY() <= zombie[k]->getY() + 54 && bullet[i][j]->getY()+10 >= zombie[k]->getY()) {
 
+                        if(bullet[i][j]->isSnow())
+                            zombie[k]->setSlowed(true);
 
-                        zombie[k]->health -= 30;
+                        zombie[k]->setHealth(zombie[k]->getHealth() - 30);
 
-                        bullet[i][j]->x = zombie[k]->x;
-                        bullet[i][j]->y = zombie[k]->y;
-                        bullet[i][j]->exists = false;
+                        bullet[i][j]->setX(zombie[k]->getX());
+                        bullet[i][j]->setY(zombie[k]->getY());
+                        bullet[i][j]->setExists(false);
                     }
 
                 }
@@ -327,30 +430,7 @@ int main()
 
                 if (!bullet[i][j]->isOutside()) {
 
-//                Bullet temp[10];
-//
-//                for(int i = 0; i < currentbullets; i++){
-//
-//                    if(bullet[i].isOutside()){
-//                        continue;
-//                    }
-//
-//                    temp[i] = bullet[i];
-//
-//
-//                }
-//                currentbullets--;
-//                for(int i = 0; i < currentbullets; i++){
-//
-//                    bullet[i] = temp[i];
-//
-//
-//                }
-//
-//
-//            }
-
-                    bullet[i][j]->moveBullet(window, bulletTime);
+                    bullet[i][j]->moveBullet(window, deltaTime);
 
                 } else {
                     delete bullet[i][j];
@@ -360,27 +440,20 @@ int main()
             }
         }
 
-        /*if(animationClock.getElapsedTime().asSeconds() > 0.1f){
-
-            if(rectPeaShooterSprite.left == 233)
-                rectPeaShooterSprite.left = 2;
-            else
-                rectPeaShooterSprite.left += 33;
-
-            peashootersprite.setTextureRect(rectPeaShooterSprite);
-            animationClock.restart();
-
-        }*/
-
-
-
-
-        for(int i = 0; i < 5; i++) {
+    //-------------------ZOMBIES---------------------//
+        for(int i = 0; i < 45; i++) {
 
             if(zombie[i] == nullptr)
                 continue;
 
-            if (zombie[i]->health <= 0) {
+            if(zombie[i]->isDancing() && zombie[i]->isSummonTimeup()){
+                zombieFactory.summonZombie(i);
+                zombie[i]->setSummonTimeup(false);
+            }
+
+
+
+            if (zombie[i]->getHealth() <= 0) {
 
                 delete zombie[i];
                 zombie[i] = nullptr;
@@ -388,16 +461,75 @@ int main()
 
             }
             else {
-                zombie[i]->moveZombie(window, bulletTime);
+
+               /* bool eating = false;
+
+                for(int j = 0; j < 45; j++){
+
+                    if(plants[j] == nullptr)
+                        continue;
+
+                    if(plants[j]->getX() <= zombie[i]->getX() + 48 && plants[j]->getX() + (gridSizeX/9) >= zombie[i]->getX() && plants[j]->getY() <= zombie[i]->getY() + 40 && plants[j]->getY()+(gridSizeY/5) >= zombie[i]->getY()){
+
+                        plants[j]->setHealth(plants[j]->getHealth() - 1);
+
+                        zombie[i]->eatingAnimation(window);
+
+                        eating = true;
+
+                    }
+
+                }
+
+                if(!eating)*/
+                    zombie[i]->moveZombie(window, deltaTime);
             }
+
+
+
+        }
+
+        //--------SUNS-----------//
+
+        for(int i = 0; i < 45; i++){
+
+            if(sun[i] == nullptr)
+                continue;
+
+            for(int j = 0; j < 5; j++){
+
+                if(sun[i][j] == nullptr)
+                    continue;
+
+                if(sun[i][j]->getClicked()){
+
+                    delete sun[i][j];
+                    sun[i][j] = nullptr;
+
+                    cout << "Total Suns: " << Sun::totalSuns << endl;
+                }
+                else
+                    sun[i][j]->drawSun(window);
+
+
+            }
+
+
+
         }
 
 
 
 
+        //---------ICONS---------------------//
 
+        for(int i = 0; i < 7; i++){
+            if(icons[i] == nullptr)
+                continue;
 
+            icons[i]->drawIcon(window);
 
+        }
 
 
         window.setSize(sf::Vector2u(256*scale,192*scale));

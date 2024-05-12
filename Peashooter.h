@@ -8,20 +8,19 @@
 #include "SFML/Graphics.hpp"
 #include <iostream>
 #include "Bullet.h"
+#include "Plant.h"
+#include "Zombie.h"
 
 using namespace std;
 using namespace sf;
 
 
-class Peashooter{
+class Peashooter: public Plant{
 
-public:
-
-    Image spritesheet;
-    Texture peashootertexture;
-    Sprite peashootersprite;
 
     Bullet** bullets;
+
+    Zombie** zombies;
 
     int currentbullets;
 
@@ -29,23 +28,23 @@ public:
 
     Clock fireClock;
 
-    int lanenum;
+public:
 
-    float x,y;
-
-    Peashooter(Bullet**& bullets, int lane){
+    Peashooter(Bullet**& bullets, Zombie**& zombies, int lane){
 
         spritesheet.loadFromFile("Images/shooter_sheet_ds.png");
 
-        peashootertexture.loadFromImage(spritesheet);
+        planttexture.loadFromImage(spritesheet);
 
-        peashootersprite.setTexture(peashootertexture);
+        plantsprite.setTexture(planttexture);
 
-        peashootersprite.setTextureRect(IntRect(0,0,27,33));
-        peashootersprite.setPosition(100,100);
-        peashootersprite.scale(1,1);
+        plantsprite.setTextureRect(IntRect(0, 0, 27, 33));
+        plantsprite.setPosition(100, 100);
+        plantsprite.scale(1, 1);
 
         this->bullets = bullets;
+
+        this->zombies = zombies;
 
         currentbullets = 0;
 
@@ -58,84 +57,85 @@ public:
 
         if(animationClock.getElapsedTime().asSeconds() > 0.1f){
 
-            if(peashootersprite.getTextureRect().left == 189)
-                peashootersprite.setTextureRect(IntRect(0,0,27,33));
+            if(plantsprite.getTextureRect().left == 189)
+                plantsprite.setTextureRect(IntRect(0, 0, 27, 33));
             else
-                peashootersprite.setTextureRect(IntRect(peashootersprite.getTextureRect().left + 27,0,27,33));
+                plantsprite.setTextureRect(IntRect(plantsprite.getTextureRect().left + 27, 0, 27, 33));
 
 
             animationClock.restart();
 
         }
 
-        window.draw(peashootersprite);
+        window.draw(plantsprite);
 
     }
 
-    void spawn(int X, int Y){
 
-        x = X;
-        y = Y;
+    virtual void update(){
 
-        peashootersprite.setPosition(x,y);
+        for(int i = 0; i < 45; i++) {
 
+            if(zombies[i] == nullptr || zombies[i]->getLaneNum() != lanenum)
+            continue;
 
-
-    }
-
-    void fire(){
-
-        if(fireClock.getElapsedTime().asSeconds() > 1.0f) {
-
-            if (currentbullets < 10) {
-                if (bullets[currentbullets] == nullptr) {
-                    bullets[currentbullets] = new Bullet();
+            if (zombies[i]->getX() < gridSizeX) {
 
 
-                    bullets[currentbullets]->x = this->x + 21;
+                if (fireClock.getElapsedTime().asSeconds() > 1.0f) {
 
-                    bullets[currentbullets]->y = this->y + 2;
-
-                    bullets[currentbullets]->bulletsprite.setPosition(this->x, this->y);
-
-                    bullets[currentbullets]->velocity = 70;
-
-                    bullets[currentbullets]->exists = true;
+                    if (currentbullets < 10) {
+                        if (bullets[currentbullets] == nullptr) {
+                            bullets[currentbullets] = new Bullet();
 
 
-                    currentbullets++;
+                            bullets[currentbullets]->setX(this->x + 21);
+
+                            bullets[currentbullets]->setY(this->y + 2);
+
+                            //bullets[currentbullets]->bulletsprite.setPosition(this->x, this->y);
+
+                            bullets[currentbullets]->setVelocity(70);
+
+                            bullets[currentbullets]->setExists(true);
 
 
+                            currentbullets++;
+
+
+                        }
+                    } else {
+                        currentbullets = 0;
+                        if (bullets[currentbullets] == nullptr) {
+                            bullets[currentbullets] = new Bullet();
+
+                            bullets[currentbullets]->setX(this->x + 21);
+
+                            bullets[currentbullets]->setY(this->y + 2);
+
+                            //bullets[currentbullets]->bulletsprite.setPosition(this->x, this->y);
+
+                            bullets[currentbullets]->setVelocity(70);
+
+                            bullets[currentbullets]->setExists(true);
+
+                            currentbullets++;
+
+                        }
+
+
+                    }
+
+                    fireClock.restart();
                 }
-            } else {
-                currentbullets = 0;
-                if (bullets[currentbullets] == nullptr) {
-                    bullets[currentbullets] = new Bullet();
-
-                    bullets[currentbullets]->x = this->x + 21;
-
-                    bullets[currentbullets]->y = this->y + 2;
-
-                    bullets[currentbullets]->bulletsprite.setPosition(this->x, this->y);
-
-                    bullets[currentbullets]->velocity = 70;
-
-                    bullets[currentbullets]->exists = true;
-
-                    currentbullets++;
-
-                }
-
-
             }
-
-            fireClock.restart();
         }
 
 
 
-
     }
+
+
 
 
 

@@ -9,9 +9,20 @@
 using namespace std;
 class DancingZombie: public Zombie{
 
+    Clock animationClock;
 
+    Clock summonClock;
 
+    float y_velocity;
 
+public:
+
+    DancingZombie();
+    virtual void moveZombie(RenderWindow& window,Time &ZombTime) ;
+
+    virtual void eatingAnimation(RenderWindow& window);
+
+    virtual void spawn(int y);
 
 
 

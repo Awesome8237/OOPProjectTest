@@ -57,6 +57,30 @@ build CMakeFiles/SFMLTest.dir/main.cpp.obj: CXX_COMPILER__SFMLTest_unscanned_Deb
   OBJECT_DIR = CMakeFiles\SFMLTest.dir
   OBJECT_FILE_DIR = CMakeFiles\SFMLTest.dir
 
+build CMakeFiles/SFMLTest.dir/Bullet.cpp.obj: CXX_COMPILER__SFMLTest_unscanned_Debug C$:/Users/admin/CLionProjects/SFMLTest/Bullet.cpp || cmake_object_order_depends_target_SFMLTest
+  DEFINES = -DSFML_STATIC
+  DEP_FILE = CMakeFiles\SFMLTest.dir\Bullet.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -Ic:/SFML/include -isystem C:/SFML/include
+  OBJECT_DIR = CMakeFiles\SFMLTest.dir
+  OBJECT_FILE_DIR = CMakeFiles\SFMLTest.dir
+
+build CMakeFiles/SFMLTest.dir/CherryBomb.cpp.obj: CXX_COMPILER__SFMLTest_unscanned_Debug C$:/Users/admin/CLionProjects/SFMLTest/CherryBomb.cpp || cmake_object_order_depends_target_SFMLTest
+  DEFINES = -DSFML_STATIC
+  DEP_FILE = CMakeFiles\SFMLTest.dir\CherryBomb.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -Ic:/SFML/include -isystem C:/SFML/include
+  OBJECT_DIR = CMakeFiles\SFMLTest.dir
+  OBJECT_FILE_DIR = CMakeFiles\SFMLTest.dir
+
+build CMakeFiles/SFMLTest.dir/DancingZombie.cpp.obj: CXX_COMPILER__SFMLTest_unscanned_Debug C$:/Users/admin/CLionProjects/SFMLTest/DancingZombie.cpp || cmake_object_order_depends_target_SFMLTest
+  DEFINES = -DSFML_STATIC
+  DEP_FILE = CMakeFiles\SFMLTest.dir\DancingZombie.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -Ic:/SFML/include -isystem C:/SFML/include
+  OBJECT_DIR = CMakeFiles\SFMLTest.dir
+  OBJECT_FILE_DIR = CMakeFiles\SFMLTest.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target SFMLTest
@@ -65,7 +89,7 @@ build CMakeFiles/SFMLTest.dir/main.cpp.obj: CXX_COMPILER__SFMLTest_unscanned_Deb
 #############################################
 # Link the executable SFMLTest.exe
 
-build SFMLTest.exe: CXX_EXECUTABLE_LINKER__SFMLTest_Debug CMakeFiles/SFMLTest.dir/main.cpp.obj | C$:/SFML/lib/libsfml-audio-s-d.a C$:/SFML/lib/libsfml-graphics-s-d.a C$:/SFML/lib/libsfml-window-s-d.a C$:/SFML/lib/libsfml-system-s-d.a C$:/SFML/lib/libopenal32.a C$:/SFML/lib/libvorbisfile.a C$:/SFML/lib/libvorbisenc.a C$:/SFML/lib/libvorbis.a C$:/SFML/lib/libogg.a C$:/SFML/lib/libFLAC.a C$:/SFML/lib/libfreetype.a
+build SFMLTest.exe: CXX_EXECUTABLE_LINKER__SFMLTest_Debug CMakeFiles/SFMLTest.dir/main.cpp.obj CMakeFiles/SFMLTest.dir/Bullet.cpp.obj CMakeFiles/SFMLTest.dir/CherryBomb.cpp.obj CMakeFiles/SFMLTest.dir/DancingZombie.cpp.obj | C$:/SFML/lib/libsfml-audio-s-d.a C$:/SFML/lib/libsfml-graphics-s-d.a C$:/SFML/lib/libsfml-window-s-d.a C$:/SFML/lib/libsfml-system-s-d.a C$:/SFML/lib/libopenal32.a C$:/SFML/lib/libvorbisfile.a C$:/SFML/lib/libvorbisenc.a C$:/SFML/lib/libvorbis.a C$:/SFML/lib/libogg.a C$:/SFML/lib/libFLAC.a C$:/SFML/lib/libfreetype.a
   FLAGS = -g
   LINK_LIBRARIES = C:/SFML/lib/libsfml-audio-s-d.a  C:/SFML/lib/libsfml-graphics-s-d.a  C:/SFML/lib/libsfml-window-s-d.a  C:/SFML/lib/libsfml-system-s-d.a  C:/SFML/lib/libopenal32.a  C:/SFML/lib/libvorbisfile.a  C:/SFML/lib/libvorbisenc.a  C:/SFML/lib/libvorbis.a  C:/SFML/lib/libogg.a  C:/SFML/lib/libFLAC.a  -lOpenGL32  -lwinmm  -lgdi32  C:/SFML/lib/libfreetype.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\SFMLTest.dir

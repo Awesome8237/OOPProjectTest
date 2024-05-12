@@ -11,102 +11,58 @@ using namespace std;
 
 class Bullet{
 
-public:
-
     Image spritesheet;
+    Image snowbullet;
     Texture bullettexture;
     Sprite bulletsprite;
+
+    bool snow;
+public:
+    bool isSnow() const;
+
+    void setSnow(bool snow);
+
+    float getVelocity() const;
+
+    void setVelocity(float velocity);
+
+    bool isExists() const;
+
+    void setExists(bool exists);
+
+    float getX() const;
+
+    void setX(float x);
+
+    float getY() const;
+
+    void setY(float y);
+
+
+private:
     float velocity;
 
+
+private:
     bool exists;
+
+
+private:
 
     float x, y;
 
 
+public:
 
-    Bullet(){
-
-
-        spritesheet.loadFromFile("Images/shooter_sheet_ds.png");
-
-        bullettexture.loadFromImage(spritesheet);
-
-        bulletsprite.setTexture(bullettexture);
-        IntRect rectbulletSprite(77,43,11,10);
-        bulletsprite.setTextureRect(rectbulletSprite);
-
-        bulletsprite.scale(1,1);
-
-        exists = false;
+    Bullet();
 
 
-    }
+    void moveBullet(RenderWindow& window,Time &bulletTime);
 
-    void fire(){
-
-
-        bulletsprite.setPosition(121, 106);
-
-        x = 121;
-
-        y = 103;
-
-        velocity = 70;
-
-        exists = true;
+    bool isOutside();
 
 
-    }
-
-    void moveBullet(RenderWindow& window,Time &bulletTime){
-
-        bulletsprite.setPosition((x += velocity * bulletTime.asSeconds()),y);
-        window.draw(bulletsprite);
-
-
-    }
-
-    bool isOutside(){
-
-        if(x > 600 || !exists){
-            return true;
-        }
-        else{
-            return false;
-        }
-
-
-    }
-
-    Bullet& operator=(Bullet& copy){
-
-        spritesheet.loadFromFile("Images/peashooter_sheet_test.png");
-
-        bullettexture.loadFromImage(spritesheet);
-
-        bulletsprite.setTexture(bullettexture);
-        IntRect rectbulletSprite(256,63,10,10);
-        bulletsprite.setTextureRect(rectbulletSprite);
-
-
-        bulletsprite.scale(1,1);
-
-        velocity = copy.velocity;
-        x = copy.x;
-        y = copy.y;
-
-        return *this;
-
-
-
-    }
-
-    ~Bullet(){
-
-
-
-    }
-
+    ~Bullet(){}
 
 
 };

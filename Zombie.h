@@ -1,17 +1,15 @@
 //
-// Created by admin on 4/30/2024.
+// Created by admin on 5/6/2024.
 //
 
 #ifndef SFMLTEST_ZOMBIE_H
 #define SFMLTEST_ZOMBIE_H
-
 #include <SFML/Graphics.hpp>
-#include "ZombieAbstract.h"
 
 using namespace sf;
 using namespace std;
 
-/*const int scale = 3;
+const int scale = 3;
 
 const int windowSizeX = 256;
 const int windowSizeY = 192;
@@ -20,79 +18,113 @@ const int gridSizeY = 169;
 const int windowLocationX = 71;
 const int windowLocationY = 2;
 const int gridLocationX = 5;
-const int gridLocationY = 17;*/
+const int gridLocationY = 17;
 
-class Zombie: public ZombieAbstract{
+class Zombie{
+
+
+protected:
+    Image zombspritesheet;
+    Texture zombtexture;
+    Sprite zombsprite;
+
+    bool dancing;
+
+    bool summonTimeup;
+public:
+    bool isSummonTimeup() const {
+        return summonTimeup;
+    }
+
+    void setSummonTimeup(bool summonTimeup) {
+        Zombie::summonTimeup = summonTimeup;
+    }
+
+
+public:
+    bool isDancing() const {
+        return dancing;
+    }
+
+    void setDancing(bool d) {
+        Zombie::dancing = d;
+    }
+
+protected:
+
+    float velocity;
+
+public:
+    bool isSlowed() const {
+        return slowed;
+    }
+
+    void setSlowed(bool slowed) {
+        Zombie::slowed = slowed;
+    }
+
+protected:
+    bool slowed;
+
+    Clock slowClock;
+public:
+    float getVelocity() const {
+        return velocity;
+    }
+
+    void setVelocity(float velocity) {
+        Zombie::velocity = velocity;
+    }
+
+    int getHealth() const {
+        return health;
+    }
+
+    void setHealth(int health) {
+        Zombie::health = health;
+    }
+
+    int getLaneNum() const {
+        return laneNum;
+    }
+
+    void setLaneNum(int laneNum) {
+        Zombie::laneNum = laneNum;
+    }
+
+    float getX() const {
+        return x;
+    }
+
+    void setX(float x) {
+        Zombie::x = x;
+    }
+
+    float getY() const {
+        return y;
+    }
+
+    void setY(float y) {
+        Zombie::y = y;
+    }
+
+protected:
+
+    int health;
+
+    int laneNum;
+
+    float x,y;
 
 public:
 
-    /*Image zombspritesheet;
-    Texture zombtexture;
-    Sprite zombsprite;
-    float velocity;
-
-    int health;*/
-
-
-    Clock animationClock;
-
-    /*float x, y;*/
+    virtual void moveZombie(RenderWindow& window,Time &ZombTime) = 0;
+    virtual void spawn(int y) = 0;
+    virtual void eatingAnimation(RenderWindow& window) = 0;
 
 
 
-    Zombie(){
-
-
-        zombspritesheet.loadFromFile("Images/zombie_sheet_test.png");
-
-        zombtexture.loadFromImage(zombspritesheet);
-
-        zombsprite.setTexture(zombtexture);
-        zombsprite.setTextureRect(IntRect(0,59,42,54));
-
-
-        zombsprite.setPosition(326,100);
-
-        x = 326;
-
-        y = 100;
-
-        velocity = 5;
-
-        health = 120;
-
-
-        zombsprite.scale(1,1);
-
-
-
-
-    }
-
-
-    virtual void moveZombie(RenderWindow& window,Time &ZombTime){
-
-
-        zombsprite.setPosition((x -= velocity * ZombTime.asSeconds()),y);
-
-        if(animationClock.getElapsedTime().asSeconds() > 0.5f){
-
-            if(zombsprite.getTextureRect().left == 300)
-                zombsprite.setTextureRect(IntRect(0,59,42,54));
-            else
-                zombsprite.setTextureRect(IntRect(zombsprite.getTextureRect().left + 50,59,42,54));
-
-
-            animationClock.restart();
-
-        }
-
-        window.draw(zombsprite);
-
-
-    }
-
-    /*bool isOutside(){
+    bool isOutside(){
 
         if(x > windowSizeX){
             return true;
@@ -102,21 +134,16 @@ public:
         }
 
 
-    }*/
+    }
 
-    virtual void spawn(int y){
-
-        x = float(gridLocationX+gridSizeX);
-
-        this->y = y-20;
-
-        zombsprite.setPosition(x,this->y);
+    virtual ~Zombie(){}
 
 
-        velocity = 5;
 
 
-    };
+
+
+
 
 
 
