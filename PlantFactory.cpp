@@ -32,7 +32,7 @@ void PlantFactory::createPlant(int i, int j,int iconNum) {
         for (int k = 0; k < 10; k++)
             bullet[currentshooter][k] = nullptr;
 
-        plants[currentplant] = new Peashooter(bullet[currentshooter], zombie, i);
+        plants[currentplant] = new Peashooter(bullet[currentshooter], zombie, i, j);
 
         plants[currentplant]->spawn((246 / 9) * j + 5,
                                     (169 / 5) * i + 17);
@@ -47,7 +47,7 @@ void PlantFactory::createPlant(int i, int j,int iconNum) {
         for (int k = 0; k < 5; k++)
             sun[currentflower][k] = nullptr;
 
-        plants[currentplant] = new SunFlower(sun[currentflower], i);
+        plants[currentplant] = new SunFlower(sun[currentflower], i, j);
 
         plants[currentplant]->spawn((246 / 9) * j + 5,
                                     (169 / 5) * i + 17);
@@ -59,7 +59,7 @@ void PlantFactory::createPlant(int i, int j,int iconNum) {
     } else if (iconNum == 2) {
 
 
-        plants[currentplant] = new CherryBomb(zombie, i);
+        plants[currentplant] = new CherryBomb(zombie, i, j);
 
         plants[currentplant]->spawn((246 / 9) * j + 5,
                                     (169 / 5) * i + 17);
@@ -69,7 +69,7 @@ void PlantFactory::createPlant(int i, int j,int iconNum) {
 
     } else if (iconNum == 3) {
 
-        plants[currentplant] = new WallNut(zombie, i, deltaTime);
+        plants[currentplant] = new WallNut(zombie, i, deltaTime, j);
 
         plants[currentplant]->spawn((246 / 9) * j + 5,
                                     (169 / 5) * i + 17);
@@ -85,7 +85,7 @@ void PlantFactory::createPlant(int i, int j,int iconNum) {
         for (int k = 0; k < 10; k++)
             bullet[currentshooter][k] = nullptr;
 
-        plants[currentplant] = new FrozenPeashooter(bullet[currentshooter], zombie, i);
+        plants[currentplant] = new FrozenPeashooter(bullet[currentshooter], zombie, i, j);
 
         plants[currentplant]->spawn((246 / 9) * j + 5,
                                     (169 / 5) * i + 17);
@@ -99,7 +99,7 @@ void PlantFactory::createPlant(int i, int j,int iconNum) {
         for (int k = 0; k < 10; k++)
             bullet[currentshooter][k] = nullptr;
 
-        plants[currentplant] = new Repeater(bullet[currentshooter], zombie, i);
+        plants[currentplant] = new Repeater(bullet[currentshooter], zombie, i, j);
 
         plants[currentplant]->spawn((246 / 9) * j + 5,
                                     (169 / 5) * i + 17);

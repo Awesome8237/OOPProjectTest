@@ -3,7 +3,7 @@
 //
 #include "Peashooter.h"
 
-Peashooter::Peashooter(Bullet**& bullets, Zombie**& zombies, int lane){
+Peashooter::Peashooter(Bullet**& bullets, Zombie**& zombies, int lane, int colnum){
 
 spritesheet.loadFromFile("Images/shooter_sheet_ds.png");
 
@@ -26,6 +26,8 @@ health = 100;
     bomb = false;
 
 lanenum = lane;
+
+this->colnum = colnum;
 
 x = 0, y = 0;
 }

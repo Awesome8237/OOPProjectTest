@@ -3,7 +3,7 @@
 //
 #include "FrozenPeaShooter.h"
 
-FrozenPeashooter::FrozenPeashooter(Bullet**& bullets, Zombie**& zombies, int lane){
+FrozenPeashooter::FrozenPeashooter(Bullet**& bullets, Zombie**& zombies, int lane, int colnum){
 
 spritesheet.loadFromFile("Images/fps_sheet.png");
 
@@ -24,6 +24,8 @@ currentbullets = 0;
     health = 100;
 
     bomb = false;
+
+    this->colnum = colnum;
 
 lanenum = lane;
 

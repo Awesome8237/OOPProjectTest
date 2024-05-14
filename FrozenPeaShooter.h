@@ -30,14 +30,14 @@ class FrozenPeashooter: public Plant{
 
 public:
 
-    FrozenPeashooter(Bullet**& bullets, Zombie**& zombies, int lane);
+    FrozenPeashooter(Bullet**& bullets, Zombie**& zombies, int lane, int colnum);
 
     void idleAnimation(RenderWindow& window);
 
 
     virtual void update();
 
-
+    ~FrozenPeashooter(){}
 
 
 

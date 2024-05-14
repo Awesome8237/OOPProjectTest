@@ -4,7 +4,7 @@
 
 #include "WallNut.h"
 
-WallNut::WallNut(Zombie** zombies, int lane, Time &deltaTime){
+WallNut::WallNut(Zombie** zombies, int lane, Time &deltaTime, int colnum){
 
 spritesheet.loadFromFile("Images/wallNut_sheet.png");
 
@@ -18,6 +18,7 @@ plantsprite.scale(1, 1);
 
 /*plantsprite.setOrigin(28/2,30/2);*/
 
+    this->colnum = colnum;
 
 this->zombie = zombies;
 
@@ -66,6 +67,10 @@ void WallNut::idleAnimation(RenderWindow& window) {
 
     }
 
+    if(x >= 500)
+        health = 0;
+
 
     window.draw(plantsprite);
 }
+

@@ -19,3 +19,11 @@ bool Plant::isBomb() const {
 void Plant::setBomb(bool bomb) {
     Plant::bomb = bomb;
 }
+
+int Plant::getColnum() const {
+    return colnum;
+}
+
+void Plant::setColnum(int colnum) {
+    Plant::colnum = colnum;
+}

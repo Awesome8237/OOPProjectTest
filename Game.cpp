@@ -400,8 +400,10 @@ Game::Game() {
             plants[i]->idleAnimation(window);
 
             if (plants[i]->getHealth() <= 0) {
+                FIELD_GAME_STATUS[plants[i]->getLanenum()][plants[i]->getColnum()] = false;
                 delete plants[i];
                 plants[i] = nullptr;
+
             }
         }
 

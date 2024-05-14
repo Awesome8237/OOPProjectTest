@@ -3,7 +3,7 @@
 //
 #include "SunFlower.h"
 
-SunFlower::SunFlower(Sun** suns,int lane){
+SunFlower::SunFlower(Sun** suns,int lane, int colnum){
 
 spritesheet.loadFromFile("Images/sunflower_sheet.png");
 
@@ -16,6 +16,8 @@ plantsprite.setPosition(100, 100);
 plantsprite.scale(1, 1);
 
 this->suns = suns;
+
+    this->colnum = colnum;
 
 currentsuns = 0;
 

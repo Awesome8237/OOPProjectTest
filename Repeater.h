@@ -32,13 +32,14 @@ class Repeater: public Plant{
 
 public:
 
-    Repeater(Bullet**& bullets, Zombie**& zombies, int lane);
+    Repeater(Bullet**& bullets, Zombie**& zombies, int lane, int colnum);
 
     void idleAnimation(RenderWindow& window);
 
 
     virtual void update();
 
+    ~Repeater(){}
 
 
 

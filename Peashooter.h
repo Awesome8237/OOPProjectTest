@@ -30,7 +30,7 @@ class Peashooter: public Plant{
 
 public:
 
-    Peashooter(Bullet**& bullets, Zombie**& zombies, int lane);
+    Peashooter(Bullet**& bullets, Zombie**& zombies, int lane, int colnum);
 
     void idleAnimation(RenderWindow& window);
 
@@ -38,6 +38,7 @@ public:
     virtual void update();
 
 
+    ~Peashooter(){}
 
 
 

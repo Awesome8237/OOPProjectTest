@@ -3,7 +3,7 @@
 //
 #include "CherryBomb.h"
 
-CherryBomb::CherryBomb(Zombie **zombies, int lane) {
+CherryBomb::CherryBomb(Zombie **zombies, int lane, int colnum) {
 
     spritesheet.loadFromFile("Images/cb_sheet.png");
 
@@ -18,6 +18,8 @@ plantsprite.scale(0.75, 0.75);
 this->zombie = zombies;
 
 lanenum = lane;
+
+    this->colnum = colnum;
 
     health = 10000;
 

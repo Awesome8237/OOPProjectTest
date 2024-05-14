@@ -3,7 +3,7 @@
 //
 #include "Repeater.h"
 
-Repeater::Repeater(Bullet**& bullets, Zombie**& zombies, int lane){
+Repeater::Repeater(Bullet**& bullets, Zombie**& zombies, int lane, int colnum){
 
 spritesheet.loadFromFile("Images/repeater_sheet.png");
 
@@ -18,6 +18,8 @@ plantsprite.scale(1, 1);
 this->bullets = bullets;
 
 this->zombies = zombies;
+
+    this->colnum = colnum;
 
 currentbullets = 0;
 

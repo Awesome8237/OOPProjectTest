@@ -22,12 +22,13 @@ class SunFlower: public Plant{
 
 public:
 
-    SunFlower(Sun** suns,int lane);
+    SunFlower(Sun** suns,int lane, int colnum);
 
     void idleAnimation(RenderWindow& window);
 
     void virtual update();
 
+    ~SunFlower(){}
 
 
 

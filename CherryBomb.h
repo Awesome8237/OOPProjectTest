@@ -45,7 +45,7 @@ private:
 
 public:
 
-    CherryBomb(Zombie** zombies, int lane);
+    CherryBomb(Zombie** zombies, int lane, int colnum);
 
     virtual void update();
 
@@ -54,7 +54,7 @@ public:
 
     virtual void idleAnimation(RenderWindow& window);
 
-
+    ~CherryBomb(){}
 
 
 

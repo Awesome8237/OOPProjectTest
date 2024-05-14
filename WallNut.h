@@ -24,11 +24,13 @@ class WallNut: public Plant{
 
 public:
 
-    WallNut(Zombie** zombies, int lane, Time &deltaTime);
+    WallNut(Zombie** zombies, int lane, Time &deltaTime, int colnum);
 
     virtual void update();
 
     virtual void idleAnimation(RenderWindow& window) ;
+
+    ~WallNut(){}
 
 
 

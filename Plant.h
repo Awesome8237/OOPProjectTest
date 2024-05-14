@@ -14,6 +14,13 @@ protected:
     Sprite plantsprite;
 
     int lanenum;
+    int colnum;
+public:
+    int getColnum() const;
+
+    void setColnum(int colnum);
+
+protected:
 
     bool bomb;
 public:
@@ -66,6 +73,8 @@ public:
 
     virtual void update() = 0;
     virtual void idleAnimation(RenderWindow& window) = 0;
+
+    virtual ~Plant(){}
 
 
 
