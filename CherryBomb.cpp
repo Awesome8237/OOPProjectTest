@@ -19,7 +19,15 @@ this->zombie = zombies;
 
 lanenum = lane;
 
+    health = 10000;
+
+    bomb = true;
+
 exploded = false;
+
+dead = false;
+
+frameNumber = 0;
 
 }
 
@@ -32,8 +40,48 @@ void CherryBomb::update(){
             if(zombie[i] == nullptr)
                 continue;
 
-            if(x-(gridSizeX / 9) <= zombie[i]->getX() + 42 && x + (gridSizeX / 9) >= zombie[i]->getX() && y-(gridSizeY / 5) <= zombie[i]->getY() + 54 && y+(gridSizeY / 5) >= zombie[i]->getY())
+            if(x-(246 / 9) <= zombie[i]->getX() + 42 && x + (246 / 9) >= zombie[i]->getX() && y-(169 / 5) <= zombie[i]->getY() + 54 && y+(169 / 5) >= zombie[i]->getY())
                 zombie[i]->setHealth(0);
+
+        }
+
+    }
+    if(exploded){
+
+        if(frameNumber == 0){
+            plantsprite.setTextureRect(IntRect(0, 37, 68, 67));
+            frameNumber++;
+        }
+        else if(frameNumber == 1){
+            plantsprite.setTextureRect(IntRect(68, 37, 83, 67));
+            frameNumber++;
+        }
+        else if(frameNumber == 2){
+            plantsprite.setTextureRect(IntRect(68+83, 37, 95, 67));
+            frameNumber++;
+        }
+        else if(frameNumber == 3){
+            plantsprite.setTextureRect(IntRect(68+83+95, 37, 95, 67));
+            frameNumber++;
+        }
+        else if(frameNumber == 4){
+            plantsprite.setTextureRect(IntRect(68+83+95+95, 37, 95, 67));
+            frameNumber++;
+        }
+        else if(frameNumber == 5){
+            plantsprite.setTextureRect(IntRect(68+83+95+95+95, 37, 95, 67));
+            frameNumber++;
+        }
+        else if(frameNumber == 6){
+            plantsprite.setTextureRect(IntRect(68+83+95+95+95+95, 37, 95, 67));
+            frameNumber++;
+        }
+        else if(frameNumber == 7){
+            plantsprite.setTextureRect(IntRect(68+83+95+95+95+95+82, 37, 87, 67));
+            frameNumber++;
+        }
+        else{
+            health = 0;
 
         }
 

@@ -17,6 +17,10 @@ class CherryBomb: public Plant{
     Zombie** zombie;
 
     Clock timer;
+
+    bool dead;
+
+    int frameNumber;
 public:
 
     const Clock &getTimer() const {

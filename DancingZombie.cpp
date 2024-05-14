@@ -51,10 +51,10 @@ void DancingZombie::moveZombie(RenderWindow& window,Time &ZombTime) {
         //set velocity back to normal
     }
 
-    if(y+85 >= gridSizeY+gridLocationY || y <= 0)
+    if(y+85 >= 169+17 || y <= 0)
         y_velocity = -y_velocity;
 
-    if(summonClock.getElapsedTime().asSeconds() > 30.f) {
+    if(summonClock.getElapsedTime().asSeconds() > 15.f) {
         summonTimeup = true;
         summonClock.restart();
     }
@@ -80,7 +80,7 @@ void DancingZombie::moveZombie(RenderWindow& window,Time &ZombTime) {
 
 void DancingZombie::eatingAnimation(RenderWindow& window){
 
-    if (animationClock.getElapsedTime().asSeconds() > 0.3f) {
+    /*if (animationClock.getElapsedTime().asSeconds() > 0.3f) {
 
         if (zombsprite.getTextureRect().left == 55*9 || zombsprite.getTextureRect().left == 0)
             zombsprite.setTextureRect(IntRect(0, 675, 50, 80));
@@ -90,7 +90,9 @@ void DancingZombie::eatingAnimation(RenderWindow& window){
 
         animationClock.restart();
 
-    }
+    }*/
+
+    zombsprite.setTextureRect(IntRect(0, 675, 50, 80));
 
     window.draw(zombsprite);
 
@@ -100,7 +102,7 @@ void DancingZombie::eatingAnimation(RenderWindow& window){
 
 void DancingZombie::spawn(int y){
 
-    x = float(gridLocationX+gridSizeX);
+    x = float(5+246);
 
     this->y = y-20;
 

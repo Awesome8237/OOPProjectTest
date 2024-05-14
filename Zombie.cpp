@@ -5,7 +5,7 @@
 
 bool Zombie::isOutside(){
 
-    if(x > windowSizeX){
+    if(x > 192){
         return true;
     }
     else{

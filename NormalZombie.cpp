@@ -78,7 +78,15 @@ void NormalZombie::moveZombie(RenderWindow& window,Time &ZombTime){
 
 }
 
-void NormalZombie::eatingAnimation(RenderWindow& window) {};
+void NormalZombie::eatingAnimation(RenderWindow& window) {
+
+
+
+    window.draw(zombsprite);
+
+
+
+};
 
 /*bool isOutside(){
 
@@ -94,7 +102,7 @@ void NormalZombie::eatingAnimation(RenderWindow& window) {};
 
 void NormalZombie::spawn(int y){
 
-    x = float(gridLocationX+gridSizeX);
+    x = float(5+246);
 
     this->y = y-20;
 

@@ -23,6 +23,10 @@ this->zombie = zombies;
 
 this->deltaTime = deltaTime;
 
+    health = 100;
+
+    bomb = false;
+
 lanenum = lane;
 
 }

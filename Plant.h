@@ -15,6 +15,14 @@ protected:
 
     int lanenum;
 
+    bool bomb;
+public:
+    bool isBomb() const;
+
+    void setBomb(bool bomb);
+
+protected:
+
     float x,y;
 public:
     int getLanenum() const {

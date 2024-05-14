@@ -11,6 +11,7 @@ using namespace std;
 
 const int scale = 3;
 
+/*
 const int windowSizeX = 256;
 const int windowSizeY = 192;
 const int gridSizeX = 246;
@@ -19,6 +20,7 @@ const int windowLocationX = 71;
 const int windowLocationY = 2;
 const int gridLocationX = 5;
 const int gridLocationY = 17;
+*/
 
 class Zombie{
 

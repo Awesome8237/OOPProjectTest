@@ -19,6 +19,10 @@ this->suns = suns;
 
 currentsuns = 0;
 
+    health = 100;
+
+    bomb = false;
+
 lanenum = lane;
 
 x = 0, y = 0;

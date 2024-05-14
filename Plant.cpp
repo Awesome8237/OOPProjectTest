@@ -11,3 +11,11 @@ void Plant::spawn(int X, int Y){
     plantsprite.setPosition(x, y);
 
 }
+
+bool Plant::isBomb() const {
+    return bomb;
+}
+
+void Plant::setBomb(bool bomb) {
+    Plant::bomb = bomb;
+}

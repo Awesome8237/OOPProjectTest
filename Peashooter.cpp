@@ -21,6 +21,10 @@ this->zombies = zombies;
 
 currentbullets = 0;
 
+health = 100;
+
+    bomb = false;
+
 lanenum = lane;
 
 x = 0, y = 0;
@@ -52,7 +56,7 @@ void Peashooter::update(){
         if(zombies[i] == nullptr || zombies[i]->getLaneNum() != lanenum)
             continue;
 
-        if (zombies[i]->getX() < gridSizeX) {
+        if (zombies[i]->getX() < 246) {
 
 
             if (fireClock.getElapsedTime().asSeconds() > 1.0f) {

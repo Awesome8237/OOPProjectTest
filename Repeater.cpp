@@ -23,6 +23,10 @@ currentbullets = 0;
 
 lanenum = lane;
 
+    health = 100;
+
+    bomb = false;
+
 x = 0, y = 0;
 
 fired = false;
@@ -54,7 +58,7 @@ void Repeater::update(){
         if(zombies[i] == nullptr || zombies[i]->getLaneNum() != lanenum)
             continue;
 
-        if (zombies[i]->getX() < gridSizeX) {
+        if (zombies[i]->getX() < 246) {
 
 
             if (fireClock.getElapsedTime().asSeconds() > 0.5f) {

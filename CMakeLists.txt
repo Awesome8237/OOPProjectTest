@@ -48,7 +48,9 @@ add_executable(SFMLTest main.cpp
         SunFlower.cpp
         WallNut.cpp
         Zombie.cpp
-        ZombieFactory.cpp)
+        ZombieFactory.cpp
+        Game.cpp
+        Menu.h)
 
 set(SFML_STATIC_LIBRARIES TRUE)
 set(SFML_DIR C:/SFML/lib/cmake/SFML)

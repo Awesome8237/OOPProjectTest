@@ -34,8 +34,8 @@ void PlantFactory::createPlant(int i, int j,int iconNum) {
 
         plants[currentplant] = new Peashooter(bullet[currentshooter], zombie, i);
 
-        plants[currentplant]->spawn((gridSizeX / 9) * j + gridLocationX,
-                                    (gridSizeY / 5) * i + gridLocationY);
+        plants[currentplant]->spawn((246 / 9) * j + 5,
+                                    (169 / 5) * i + 17);
         currentshooter++;
         currentplant++;
 
@@ -49,8 +49,8 @@ void PlantFactory::createPlant(int i, int j,int iconNum) {
 
         plants[currentplant] = new SunFlower(sun[currentflower], i);
 
-        plants[currentplant]->spawn((gridSizeX / 9) * j + gridLocationX,
-                                    (gridSizeY / 5) * i + gridLocationY);
+        plants[currentplant]->spawn((246 / 9) * j + 5,
+                                    (169 / 5) * i + 17);
 
         currentflower++;
         currentplant++;
@@ -61,8 +61,8 @@ void PlantFactory::createPlant(int i, int j,int iconNum) {
 
         plants[currentplant] = new CherryBomb(zombie, i);
 
-        plants[currentplant]->spawn((gridSizeX / 9) * j + gridLocationX,
-                                    (gridSizeY / 5) * i + gridLocationY);
+        plants[currentplant]->spawn((246 / 9) * j + 5,
+                                    (169 / 5) * i + 17);
 
         currentplant++;
 
@@ -71,8 +71,8 @@ void PlantFactory::createPlant(int i, int j,int iconNum) {
 
         plants[currentplant] = new WallNut(zombie, i, deltaTime);
 
-        plants[currentplant]->spawn((gridSizeX / 9) * j + gridLocationX,
-                                    (gridSizeY / 5) * i + gridLocationY);
+        plants[currentplant]->spawn((246 / 9) * j + 5,
+                                    (169 / 5) * i + 17);
 
         currentplant++;
 
@@ -87,8 +87,8 @@ void PlantFactory::createPlant(int i, int j,int iconNum) {
 
         plants[currentplant] = new FrozenPeashooter(bullet[currentshooter], zombie, i);
 
-        plants[currentplant]->spawn((gridSizeX / 9) * j + gridLocationX,
-                                    (gridSizeY / 5) * i + gridLocationY);
+        plants[currentplant]->spawn((246 / 9) * j + 5,
+                                    (169 / 5) * i + 17);
         currentshooter++;
         currentplant++;
     } else if (iconNum == 5) {
@@ -101,8 +101,8 @@ void PlantFactory::createPlant(int i, int j,int iconNum) {
 
         plants[currentplant] = new Repeater(bullet[currentshooter], zombie, i);
 
-        plants[currentplant]->spawn((gridSizeX / 9) * j + gridLocationX,
-                                    (gridSizeY / 5) * i + gridLocationY);
+        plants[currentplant]->spawn((246 / 9) * j + 5,
+                                    (169 / 5) * i + 17);
         currentshooter++;
         currentplant++;
     }

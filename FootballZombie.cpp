@@ -40,7 +40,11 @@ FootballZombie::FootballZombie() {
 
 }
 
-void FootballZombie::eatingAnimation(RenderWindow& window){}
+void FootballZombie::eatingAnimation(RenderWindow& window){
+
+    window.draw(zombsprite);
+
+}
 
 void FootballZombie::moveZombie(RenderWindow& window,Time &ZombTime){
 
@@ -61,11 +65,11 @@ void FootballZombie::moveZombie(RenderWindow& window,Time &ZombTime){
 
         if(upDown && laneNum > 0){
             laneNum--;
-            y -= (gridSizeY / 5);
+            y -= (169 / 5);
         }
         else if(!upDown && laneNum < 4){
             laneNum++;
-            y += (gridSizeY / 5);
+            y += (169 / 5);
         }
 
         upDownClock.restart();
@@ -109,7 +113,7 @@ void FootballZombie::moveZombie(RenderWindow& window,Time &ZombTime){
 
 void FootballZombie::spawn(int y){
 
-    x = float(gridLocationX+gridSizeX);
+    x = float(5+246);
 
     this->y = y-20;
 
